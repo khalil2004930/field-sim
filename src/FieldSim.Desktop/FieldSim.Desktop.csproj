@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../FieldSim.Core/FieldSim.Core.csproj" />
+    <ProjectReference Include="../FieldSim.Domain/FieldSim.Domain.csproj" />
+    <ProjectReference Include="../FieldSim.Data/FieldSim.Data.csproj" />
+    <ProjectReference Include="../FieldSim.Scenarios/FieldSim.Scenarios.csproj" />
+    <Content Include="../../data/**/*" Link="data/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../../assets/**/*" Link="assets/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>
