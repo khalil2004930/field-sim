@@ -2,6 +2,7 @@
   <Project Path="src/FieldSim.Core/FieldSim.Core.csproj" />
   <Project Path="src/FieldSim.Domain/FieldSim.Domain.csproj" />
   <Project Path="src/FieldSim.Data/FieldSim.Data.csproj" />
+  <Project Path="src/FieldSim.UnityBridge/FieldSim.UnityBridge.csproj" />
   <Project Path="src/FieldSim.Desktop/FieldSim.Desktop.csproj" />
   <Project Path="src/FieldSim.Web/FieldSim.Web.csproj" />
   <Project Path="src/FieldSim.Scenarios/FieldSim.Scenarios.csproj" />

@@ -6,8 +6,13 @@ namespace FieldSim.Core;
 /// </summary>
 public static class UrbanSpatialQueries
 {
-    public static bool PointInsideStructure(TacticalState state, Position3D point) =>
-        state.Structures.Any(structure => FootprintContains(structure.Bounds, point.X, point.Y));
+    public static bool PointInsideStructure(TacticalState state, Position3D point)
+    {
+        if (state.World.TryExternalPointInsideStructure(point, out var externalInside))
+            return externalInside;
+
+        return state.Structures.Any(structure => FootprintContains(structure.Bounds, point.X, point.Y));
+    }
 
     public static StructureVolume? FirstMovementBlocker(TacticalState state, Position3D from, Position3D to) =>
         state.Structures.FirstOrDefault(structure =>
@@ -21,7 +26,19 @@ public static class UrbanSpatialQueries
             SegmentIntersectsBounds3D(from, to, structure.Bounds));
 
     public static bool SegmentBlockedForMovement(TacticalState state, Position3D from, Position3D to) =>
-        FirstMovementBlocker(state, from, to) is not null;
+        SegmentBlockedForMovement(state, from, to, TacticalUnitClass.Person);
+
+    public static bool SegmentBlockedForMovement(
+        TacticalState state,
+        Position3D from,
+        Position3D to,
+        TacticalUnitClass unitClass)
+    {
+        if (state.World.TryExternalMovementBlock(from, to, unitClass, out var externalBlocked))
+            return externalBlocked;
+
+        return FirstMovementBlocker(state, from, to) is not null;
+    }
 
     public static bool IsWalkablePoint(TacticalState state, TacticalUnit unit, Position3D point)
     {
@@ -30,8 +47,12 @@ public static class UrbanSpatialQueries
         if (!double.IsFinite(point.X) || !double.IsFinite(point.Y) ||
             point.X < 0 || point.Y < 0 || point.X >= maxX || point.Y >= maxY)
             return false;
-        if (PointInsideStructure(state, point)) return false;
+
         var cell = state.World.GridPointFromWorld(point.X, point.Y);
+        if (state.World.TryExternalWalkability(point, unit.UnitClass, out var externalWalkable))
+            return externalWalkable && state.Infrastructure.IsTraversable(cell, unit.UnitClass);
+
+        if (PointInsideStructure(state, point)) return false;
         return TacticalEngine.IsWalkable(state.Tiles[cell.X, cell.Y]) &&
                state.Infrastructure.IsTraversable(cell, unit.UnitClass);
     }
@@ -57,6 +78,12 @@ public static class UrbanSpatialQueries
         Position3D to,
         out IReadOnlyList<Position3D> waypoints)
     {
+        if (state.World.TryExternalPath(from, to, unit.UnitClass, out var externalPath))
+        {
+            waypoints = externalPath;
+            return true;
+        }
+
         var result = new List<Position3D>();
         var cursor = from;
         const double clearance = 5.0;

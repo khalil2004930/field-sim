@@ -86,6 +86,30 @@ namespace FieldSim.Unity.Environment
             return new List<StructureBase>(unique);
         }
 
+        public bool IsPointInsideStructure(Vector3 point)
+        {
+            List<StructureBase> structures = GetStructuresNear(point, 0.05f);
+            foreach (StructureBase structure in structures)
+            {
+                Collider[] colliders = structure.GetComponentsInChildren<Collider>();
+                foreach (Collider collider in colliders)
+                {
+                    if (collider == null || !collider.enabled) continue;
+                    Vector3 closest = collider.ClosestPoint(point);
+                    if ((closest - point).sqrMagnitude <= 0.0001f) return true;
+                }
+            }
+            return false;
+        }
+
+        public bool IsMovementSegmentBlocked(Vector3 from, Vector3 to)
+        {
+            Vector3 direction = to - from;
+            float distance = direction.magnitude;
+            if (distance <= 0.001f) return false;
+            return Physics.Raycast(from, direction / distance, distance, structureMask, QueryTriggerInteraction.Ignore);
+        }
+
         public void RegisterTerrain(Terrain terrain)
         {
             if (terrain != null && !terrains.Contains(terrain)) terrains.Add(terrain);

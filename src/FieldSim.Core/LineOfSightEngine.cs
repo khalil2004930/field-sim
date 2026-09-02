@@ -11,6 +11,9 @@ public static class LineOfSightEngine
         ArgumentNullException.ThrowIfNull(world);
         if (sampleStepMeters <= 0) throw new ArgumentOutOfRangeException(nameof(sampleStepMeters));
 
+        if (world.TryExternalLineOfSight(observer, target, out var externalResult))
+            return externalResult;
+
         var horizontalDistance = observer.HorizontalDistanceTo(target);
         if (horizontalDistance < 0.001)
         {
@@ -90,6 +93,12 @@ public static class LineOfSightEngine
         double sampleStepMeters = 10)
     {
         ArgumentNullException.ThrowIfNull(state);
+
+        // When Unity or another external environment handles the query, its physical geometry
+        // is authoritative and the synthetic structure fallback must not be applied a second time.
+        if (state.World.TryExternalLineOfSight(observer, target, out var externalResult))
+            return externalResult;
+
         var terrainResult = Evaluate(state.World, observer, target, sampleStepMeters);
         if (terrainResult.State == LineOfSightState.Blocked) return terrainResult;
 
