@@ -1,0 +1,17 @@
+{
+  "name": "FieldSim.Unity.Tests",
+  "rootNamespace": "FieldSim.Unity.Tests",
+  "references": [
+    "FieldSim.Unity.Runtime"
+  ],
+  "includePlatforms": ["Editor"],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false,
+  "optionalUnityReferences": ["TestAssemblies"]
+}
