@@ -1,0 +1,30 @@
+FieldSim v1.10 static validation
+Date: 2026-09-02
+Release: 1.10.0-urban-c2-diagnostics
+
+PASS: browser JavaScript passes `node --check`.
+PASS: all repository JSON files parse (26 checked during packaging).
+PASS: project/XAML/solution XML parses (12 checked during packaging).
+PASS: conservative delimiter-balance scan passes across 66 C# files.
+PASS: every JavaScript $("id") DOM reference used by app.js exists in index.html (58 references checked).
+PASS: v1.10 scenario package id is `fieldsim-v1-10-urban-c2-diagnostics`.
+PASS: v1.10 scenario has 19 synthetic placement zones, 14 entity assignments, 17 visible joint-support placements, and 2 meter-native objectives.
+PASS: every scenario zone references a defined public anchor and every entity/support/objective zone reference resolves.
+PASS: all 19 placement-zone envelopes remain inside the 160 km x 210 km theater.
+PASS: all authored entity/support offsets remain inside their synthetic authoring-zone envelopes.
+PASS: Bint Jbeil public anchor projects to approximately X 41.45 km / Y 23.63 km in the local theater.
+PASS: every v1.10 entity assignment key has a corresponding CountryScaleScenario runtime placement reference.
+PASS: every v1.10 support placement id has a corresponding SimulationSession runtime support block.
+PASS: old ActiveAreaCenter / 76_000,19_500 placement path is absent from active src/data code.
+PASS: old visible tactical-grid renderer/input identifiers are absent from the web client.
+PASS: local-contact C2 model, delayed report processing, contact-confidence states, cohesion/morale engine, casualty/logistics engine, and operational support request pipeline are wired into TacticalEngine/runtime state.
+PASS: engagement requires fresh entity-local contact instead of using faction-shared knowledge as permission to fire at the target's current authoritative position.
+PASS: objective control state includes contested/lost transitions and control memory decays after abandonment.
+PASS: synthetic urban structures are wired into LOS and meter-native movement detours; lower-level geometry is generated and explicitly synthetic.
+PASS: REPORT / AAR button, /api/diagnostics/report endpoint, copy/download controls, and browser-side error/request history are present.
+PASS: diagnostic export contains run id, run start, scenario package id, deterministic seed, snapshot, semantic journal, activity/combat history, command/C2/support histories, local contacts, AI intents, and integrity findings.
+PASS: forbidden Bassel/proprietary bundle-name references are absent from this release tree.
+PASS: VERSION.txt, health endpoint, and diagnostic report identify 1.10.0-urban-c2-diagnostics.
+
+NOT COMPILER VALIDATED IN ARTIFACT ENVIRONMENT:
+No .NET SDK, csc, mcs, msbuild, or mono compiler is installed here. C# semantic/compiler validation therefore cannot be claimed. `build_windows.bat` on Windows with the .NET 10 SDK remains the authoritative compile + test check.
