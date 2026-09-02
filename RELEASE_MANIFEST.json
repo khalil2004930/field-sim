@@ -1,0 +1,937 @@
+{
+  "release": "1.10.0-urban-c2-diagnostics",
+  "generated": "2026-09-02",
+  "compilerValidated": false,
+  "compilerValidationNote": "No .NET SDK/compiler is installed in the artifact environment; run build_windows.bat on Windows with the .NET 10 SDK.",
+  "staticValidation": {
+    "jsonParsed": 26,
+    "xmlProjectParsed": 12,
+    "csharpFilesDelimiterScanned": 66,
+    "javascriptSyntax": "pass",
+    "htmlJavascriptDomRefs": 58,
+    "entityAssignments": 14,
+    "placementZones": 19,
+    "supportPlacements": 17,
+    "meterNativeObjectives": 2,
+    "diagnosticReportEndpoint": "/api/diagnostics/report",
+    "diagnosticButton": "REPORT / AAR",
+    "primaryAnchorLocalMeters": {
+      "x": 41447.9,
+      "y": 23625.1
+    },
+    "forbiddenBundleReferenceScan": "pass"
+  },
+  "fileCount": 182,
+  "files": [
+    {
+      "path": ".gitignore",
+      "sizeBytes": 28,
+      "sha256": "6acb6da077af087eb3fc06ad5ed42567260c7b0242ed04e25df99f8ccbf2367c"
+    },
+    {
+      "path": "CLEAN_ROOM.md",
+      "sizeBytes": 1073,
+      "sha256": "ee41a89a41a0bf750e4c0a3221fe85b6189f5ac89038d7936446502b730b50c4"
+    },
+    {
+      "path": "DATA_POLICY.md",
+      "sizeBytes": 5675,
+      "sha256": "4597fc7d7ec53e8d2043feca16175c2704c1b6307a5de0ca9c1b1549fcb16a92"
+    },
+    {
+      "path": "Directory.Build.props",
+      "sizeBytes": 317,
+      "sha256": "f6dd7a82f1a4871dc72acd2a896f2f26fbac38800bfb523337fa168208fb04ed"
+    },
+    {
+      "path": "FieldSim.slnx",
+      "sizeBytes": 529,
+      "sha256": "619e67828613097577b11763680200ecca19a9a9a880a1397236e600380fc2c1"
+    },
+    {
+      "path": "MIGRATION.md",
+      "sizeBytes": 407,
+      "sha256": "54a21cfef120f92d9363d3efbe9745d9326dbbf7b05904d77afdabfb66a7f997"
+    },
+    {
+      "path": "MIGRATION_V1_10.md",
+      "sizeBytes": 2219,
+      "sha256": "c39b8f46d2e48663d957c360f41705c64ff01058779a162493a746ca3dbbf032"
+    },
+    {
+      "path": "MIGRATION_V1_9_2.md",
+      "sizeBytes": 677,
+      "sha256": "065d4d8b499979ac63551964d6a9052aa5c96cf0865d2954e0468837a64910a9"
+    },
+    {
+      "path": "MIGRATION_V1_9_3.md",
+      "sizeBytes": 1148,
+      "sha256": "e925667e82269ffdabcbd20d552e55765d75b1ee4aaf845c8562fc67fef7a50f"
+    },
+    {
+      "path": "README.md",
+      "sizeBytes": 5310,
+      "sha256": "7a9162688be5b2fb548b8e1c948969582a51fae167ff46e6c9d1bd5861fa935f"
+    },
+    {
+      "path": "STATIC_VALIDATION.txt",
+      "sizeBytes": 2945,
+      "sha256": "7d6449c1decd00c91153fed227516a722854975106ff6bc311014935a87cc35f"
+    },
+    {
+      "path": "VERSION.txt",
+      "sizeBytes": 28,
+      "sha256": "05ee3ce861fcfeabf46f05fc8f148f2b45091c2ebf76e4933099c0a05e167d56"
+    },
+    {
+      "path": "assets/maps/theater_reference/sim_map_lebanon.json",
+      "sizeBytes": 911,
+      "sha256": "78999f6450ed3981167a9ffa697c1b9a774bcf796cc800e37f59c6e19cdea911"
+    },
+    {
+      "path": "assets/maps/theater_reference/sim_map_lebanon.png",
+      "sizeBytes": 269088,
+      "sha256": "20b94009538f5e6f36af2e7eae01238ba0e002d99324e3826fc4b89a9a674b40"
+    },
+    {
+      "path": "assets/maps/theater_reference/sim_map_lebanon.svg",
+      "sizeBytes": 69214,
+      "sha256": "b511deab8f6323000e7d872b5ed18d9660742aed2334a364758e0bb4f9a2123d"
+    },
+    {
+      "path": "assets/maps/theater_reference/sim_map_regional.json",
+      "sizeBytes": 1393,
+      "sha256": "e372d6a6b0e4de9c31472a4ab5d67f3ba7503f8dfffb22112d886249e28b1c8d"
+    },
+    {
+      "path": "assets/maps/theater_reference/sim_map_regional.png",
+      "sizeBytes": 320039,
+      "sha256": "990b76fb4b2e5009718f67df482d8e463f6c5a995e1e8dd81e5b03f62886f53e"
+    },
+    {
+      "path": "assets/maps/theater_reference/sim_map_regional.svg",
+      "sizeBytes": 110902,
+      "sha256": "3d03ccd3e6060ffc0e6bf2e780b9df2547347aa2ad1d51c450870263f3d4e122"
+    },
+    {
+      "path": "assets/maps/village_samples/aytaronn_sample.png",
+      "sizeBytes": 3498376,
+      "sha256": "7d0956ea27effa3ca08485a0cd3070d17d7c27e8dc53a58ab99dba572d9910e9"
+    },
+    {
+      "path": "build_windows.bat",
+      "sizeBytes": 905,
+      "sha256": "e7858426de573f38366528a6bf5dc86d5ab534bf9b8b11aa7c191cefc2c6e465"
+    },
+    {
+      "path": "data/ammunition/small_arms_cartridge_families_v1_7.json",
+      "sizeBytes": 2105,
+      "sha256": "6569383ed5cf5ec2b8feaf36edcf85e905b76fc04f8a02114b858c645799292e"
+    },
+    {
+      "path": "data/manual/hezbollah_weapon_overrides.json",
+      "sizeBytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "data/manual/overrides.json",
+      "sizeBytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "data/maps/theater/israel-and-palestine.poly",
+      "sizeBytes": 1379,
+      "sha256": "b431b29d18d256a8394def2964d3dc296bef556d46091f2dae74b57cc46dd5a7"
+    },
+    {
+      "path": "data/maps/theater/lebanon.poly",
+      "sizeBytes": 3363,
+      "sha256": "8c4b04a42fcce8c916edf2f849c4521832a33d9ce5fd08fae152bdc9d3f7c73c"
+    },
+    {
+      "path": "data/maps/theater/manifest.json",
+      "sizeBytes": 2620,
+      "sha256": "e0076834136ec59d7ec7518396dbdbb46a60e522b5912c7d12a57beb52ae635e"
+    },
+    {
+      "path": "data/maps/theater/reference_places.geojson",
+      "sizeBytes": 3936,
+      "sha256": "eae4cc0b5385d81465ef821414def7381612590be2ac417862792a6054c7a883"
+    },
+    {
+      "path": "data/organizations/idf_public_peacetime.json",
+      "sizeBytes": 68534,
+      "sha256": "a280380fd1ebd7665172ac54dba9e44571c59a7332269a39e8528eab2a5e8537"
+    },
+    {
+      "path": "data/osint_baseline/hezbollah_small_arms_osint_v1_0.csv",
+      "sizeBytes": 8232,
+      "sha256": "066067bd301b4a22ce5b18116ace9afb84c918b8449227246b729d79158c88aa"
+    },
+    {
+      "path": "data/osint_baseline/hezbollah_small_arms_osint_v1_0.json",
+      "sizeBytes": 24765,
+      "sha256": "bc5043a98da375d76f290cbbc277a9e0719676691bc0cd57f93b76d307598d80"
+    },
+    {
+      "path": "data/osint_baseline/hezbollah_weapon_research_queue.json",
+      "sizeBytes": 7019,
+      "sha256": "05845ea4ab23456b8135466b8a69025b6763abb61e0b5818bf4dbed7aff4a85a"
+    },
+    {
+      "path": "data/osint_baseline/hezbollah_weapon_sources.json",
+      "sizeBytes": 7220,
+      "sha256": "7c9bb8ff91294bae0efa9b5bb2ffcf578b4f135bca8ab647c3255820a8c2cf16"
+    },
+    {
+      "path": "data/osint_baseline/hezbollah_weapons.json",
+      "sizeBytes": 56366,
+      "sha256": "0655b4f57e7425729262257d6d2cf2546199d240b6e23ab612210249c9210adb"
+    },
+    {
+      "path": "data/osint_baseline/idf_munition_research_queue.json",
+      "sizeBytes": 707,
+      "sha256": "c96f74eac61d790820da8f2c5cb2ea989e1f143c22c835d9b545f62c79a1c894"
+    },
+    {
+      "path": "data/osint_baseline/platforms.json",
+      "sizeBytes": 8997,
+      "sha256": "52e2a6912a5418812806423e2fe73c2339957f9357657791ec62e4f02a841b13"
+    },
+    {
+      "path": "data/osint_baseline/sources.json",
+      "sizeBytes": 2995,
+      "sha256": "80f23cced5970828b818bc66cae4d7f3cc974cb208175c3a80fcd1d336ade752"
+    },
+    {
+      "path": "data/scenarios/orbat_nato_prototype.json",
+      "sizeBytes": 29544,
+      "sha256": "ae98f86da5459068c20224d81fb6aedc18a9f755a62e79eaa728d26b19998176"
+    },
+    {
+      "path": "data/scenarios/v1_10_urban_c2_scenario.json",
+      "sizeBytes": 14481,
+      "sha256": "df1f0f623fb406d30912069b272e39bb1a73f6755939e05c2efb8731cfd0cd75"
+    },
+    {
+      "path": "data/scenarios/v1_7_integrated_scenario.json",
+      "sizeBytes": 5155,
+      "sha256": "00d939f3de1b10e4b8f59a2222d82a15dd8027437a6ab8b0be5e5abf53f88493"
+    },
+    {
+      "path": "data/scenarios/v1_8_support_asset_catalog.json",
+      "sizeBytes": 3676,
+      "sha256": "93fd6c13a9a3771052982db132d3ab5512807b5580434c075f17b883fc944d21"
+    },
+    {
+      "path": "data/scenarios/v1_9_2_country_scale_scenario.json",
+      "sizeBytes": 5247,
+      "sha256": "353b9ab010360a87fc323eb083c26874fd27751814f0639fc774e748bb679b7f"
+    },
+    {
+      "path": "data/scenarios/v1_9_3_bint_jbeil_scenario.json",
+      "sizeBytes": 11969,
+      "sha256": "96dd6e8bcd987e419c6cee3bff3154debee4e83d0a62de1f03ff3f11fe19b1ea"
+    },
+    {
+      "path": "data/vehicles/idf_ground_vehicle_baseline.json",
+      "sizeBytes": 42663,
+      "sha256": "67e1de834833b6adfb97b55c5cbfdaa79cba6ee02b52925d30c79f2fc20cea23"
+    },
+    {
+      "path": "data/village_grids/catalog.json",
+      "sizeBytes": 2849,
+      "sha256": "4983c24c65cccfaf2399bf19de76b1f4786e33c9c08e2a6c8b4011d3dbc6f349"
+    },
+    {
+      "path": "data/village_grids/central/c-01_grid.csv",
+      "sizeBytes": 1670,
+      "sha256": "687c26d7eb77b709c737e4a551d5a1b77e6aa0277dcd9fdce514b4f75b8565c9"
+    },
+    {
+      "path": "data/village_grids/central/c-02_grid.csv",
+      "sizeBytes": 1670,
+      "sha256": "687c26d7eb77b709c737e4a551d5a1b77e6aa0277dcd9fdce514b4f75b8565c9"
+    },
+    {
+      "path": "data/village_grids/central/c-03_grid.csv",
+      "sizeBytes": 1670,
+      "sha256": "687c26d7eb77b709c737e4a551d5a1b77e6aa0277dcd9fdce514b4f75b8565c9"
+    },
+    {
+      "path": "data/village_grids/central/c-04_grid.csv",
+      "sizeBytes": 1670,
+      "sha256": "687c26d7eb77b709c737e4a551d5a1b77e6aa0277dcd9fdce514b4f75b8565c9"
+    },
+    {
+      "path": "data/village_grids/eastern/e-01_grid.csv",
+      "sizeBytes": 1670,
+      "sha256": "687c26d7eb77b709c737e4a551d5a1b77e6aa0277dcd9fdce514b4f75b8565c9"
+    },
+    {
+      "path": "data/village_grids/eastern/e-02_grid.csv",
+      "sizeBytes": 1670,
+      "sha256": "687c26d7eb77b709c737e4a551d5a1b77e6aa0277dcd9fdce514b4f75b8565c9"
+    },
+    {
+      "path": "data/village_grids/eastern/e-03_grid.csv",
+      "sizeBytes": 1670,
+      "sha256": "687c26d7eb77b709c737e4a551d5a1b77e6aa0277dcd9fdce514b4f75b8565c9"
+    },
+    {
+      "path": "data/village_grids/eastern/e-04_grid.csv",
+      "sizeBytes": 1670,
+      "sha256": "687c26d7eb77b709c737e4a551d5a1b77e6aa0277dcd9fdce514b4f75b8565c9"
+    },
+    {
+      "path": "data/village_grids/keypad_template.csv",
+      "sizeBytes": 21,
+      "sha256": "2f3ce183ab7c23b384e28601f3cb56808a5761b9a9686bd426dec1aa0ca2d21e"
+    },
+    {
+      "path": "data/village_grids/western/w-01_grid.csv",
+      "sizeBytes": 1670,
+      "sha256": "687c26d7eb77b709c737e4a551d5a1b77e6aa0277dcd9fdce514b4f75b8565c9"
+    },
+    {
+      "path": "data/village_grids/western/w-02_grid.csv",
+      "sizeBytes": 1670,
+      "sha256": "687c26d7eb77b709c737e4a551d5a1b77e6aa0277dcd9fdce514b4f75b8565c9"
+    },
+    {
+      "path": "data/village_grids/western/w-03_grid.csv",
+      "sizeBytes": 1670,
+      "sha256": "687c26d7eb77b709c737e4a551d5a1b77e6aa0277dcd9fdce514b4f75b8565c9"
+    },
+    {
+      "path": "data/village_grids/western/w-04_grid.csv",
+      "sizeBytes": 1670,
+      "sha256": "687c26d7eb77b709c737e4a551d5a1b77e6aa0277dcd9fdce514b4f75b8565c9"
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "sizeBytes": 2044,
+      "sha256": "086e8b9082047cc61092908462d9df1aaa5b810013a3db8f5fa106bbec1aafee"
+    },
+    {
+      "path": "docs/HEZBOLLAH_SMALL_ARMS_OSINT_V1_0.md",
+      "sizeBytes": 8903,
+      "sha256": "7b4a1f6cd4fc8e6684980e6a97d61e514491657dbd7d07c34294372dc9f5ef7c"
+    },
+    {
+      "path": "docs/IDF_ORG_TREE.md",
+      "sizeBytes": 1607,
+      "sha256": "8c55b0a58d45371c078d1bb81cfb1c0ca6c1ba62b07eb1649a4919611e8e68f3"
+    },
+    {
+      "path": "docs/MAP_DATA.md",
+      "sizeBytes": 3061,
+      "sha256": "55ee7ba6d00630584cfd55c203e84075d33c18151b4c03cf545d1a709825a8c3"
+    },
+    {
+      "path": "docs/SOURCE_AUDIT.md",
+      "sizeBytes": 1609,
+      "sha256": "3c1087befc960dc2784e28b0f82a1fa777a97457c3cb3e478493ba52057c01c4"
+    },
+    {
+      "path": "docs/SPATIAL_LOS_DETECTION.md",
+      "sizeBytes": 2514,
+      "sha256": "c1a0f31af8d64e641cc9517351a9031a5286de93fdacddb1ab23b349883890bc"
+    },
+    {
+      "path": "docs/V0_8_VILLAGE_GRID.md",
+      "sizeBytes": 717,
+      "sha256": "a06a65d8b5ce29cbc0cfb76759f20db2c59a39d0bb343218acd59873f24b24dc"
+    },
+    {
+      "path": "docs/V0_9_CHANGELOG.md",
+      "sizeBytes": 2441,
+      "sha256": "79f7625142a6ecebe9423eca9948aab14e31abe423a881d88154c3f73bcf209b"
+    },
+    {
+      "path": "docs/V0_9_HOTFIX_1.md",
+      "sizeBytes": 450,
+      "sha256": "811f40ca5b6267c1aa7d3d07270112a1b6c6490dcdecbdceba52add3bc5a49ef"
+    },
+    {
+      "path": "docs/V0_9_HOTFIX_2.md",
+      "sizeBytes": 476,
+      "sha256": "5895df81dacd736fbbfde73da3380940a8912f90c6ece21d71d91e814c924cc2"
+    },
+    {
+      "path": "docs/V0_9_VALIDATION.md",
+      "sizeBytes": 1152,
+      "sha256": "966ccd661c73aa7630f675177dac36d76b5f0874fd0088496688bcae4e2545c4"
+    },
+    {
+      "path": "docs/V1_0_CHANGELOG.md",
+      "sizeBytes": 1551,
+      "sha256": "3306f789d264b479a17bedddf452bb34584cb9996dc1e4df5bd5df688c9783e6"
+    },
+    {
+      "path": "docs/V1_0_COMBAT_MODEL.md",
+      "sizeBytes": 1937,
+      "sha256": "6206b9b3bb7175b1e793ac657112b960d83222f68760d6d85113dd5e1e218a9a"
+    },
+    {
+      "path": "docs/V1_0_VALIDATION.md",
+      "sizeBytes": 441,
+      "sha256": "8c6afb4a4a8d2014d1a2f921388dbcb3ed4835f772e30b56c2c5d8a66ac94da2"
+    },
+    {
+      "path": "docs/V1_10_HISTORICAL_DESIGN_INPUTS.md",
+      "sizeBytes": 2678,
+      "sha256": "ce22cf8f6a88573ab0f07036f4b954e86613180ca1fb5a2ecfcda26ee1e234f7"
+    },
+    {
+      "path": "docs/V1_10_URBAN_C2_DIAGNOSTICS.md",
+      "sizeBytes": 3843,
+      "sha256": "d2e7d71562e772fa6ae2bf63d78e579d193004eedf09c0293195ef59f955f9bf"
+    },
+    {
+      "path": "docs/V1_1_CHANGELOG.md",
+      "sizeBytes": 1351,
+      "sha256": "c9f925f062263337a9c052826d8c44b331e918ddfdbc0c78cb69d2a8ea87566a"
+    },
+    {
+      "path": "docs/V1_1_VALIDATION.md",
+      "sizeBytes": 1243,
+      "sha256": "2ff7a0dbe953f938c506f186b318c301843ffba933977fb05921496a285d5390"
+    },
+    {
+      "path": "docs/V1_2_AUTONOMOUS_ENGAGEMENT.md",
+      "sizeBytes": 2583,
+      "sha256": "17251dd2c0c8b83bff05f53fd3246e9292180db39b517590b5619669433439a6"
+    },
+    {
+      "path": "docs/V1_2_CHANGELOG.md",
+      "sizeBytes": 2033,
+      "sha256": "d64421a4c210d20d53c4064b212639add2654e0d8e1284f48173a7affbb9d8af"
+    },
+    {
+      "path": "docs/V1_2_VALIDATION.md",
+      "sizeBytes": 1263,
+      "sha256": "2743ea66944013cce2939d1cbe5940b8cec2a22664d203c60cb7782feda66b26"
+    },
+    {
+      "path": "docs/V1_3_ORBAT_PROTOTYPE.md",
+      "sizeBytes": 2148,
+      "sha256": "d589d396f31cbec237f81c8f8a0f3c81adf36a7b51cb2f58235d2548cb8aff08"
+    },
+    {
+      "path": "docs/V1_4_COMMAND_CENTER.md",
+      "sizeBytes": 1701,
+      "sha256": "774572ab0e3e15a0d916a6ff35fa684ed7a561a29388512c3ee0b34bcfc7e9c5"
+    },
+    {
+      "path": "docs/V1_5_VALIDATION.md",
+      "sizeBytes": 871,
+      "sha256": "2ed780b29f22aa5427d497632a9093386d5e2e55658e16a9934995660a274555"
+    },
+    {
+      "path": "docs/V1_5_WEB_ORBAT.md",
+      "sizeBytes": 1864,
+      "sha256": "08bbc279c9239e1220e016f00f9ac0209e7c3dc55ff74c10312fb8013923cd62"
+    },
+    {
+      "path": "docs/V1_6_SCENARIO_MAP.md",
+      "sizeBytes": 1320,
+      "sha256": "94058dff223fee9dc2dc32e772d2713249fdc5915c0b03982e17868515760b47"
+    },
+    {
+      "path": "docs/V1_7_ARCHITECTURE.md",
+      "sizeBytes": 3660,
+      "sha256": "c4fa5b03a287418e35813da0d33d999e67cd96d5ddf47d1539287fd1825b4dfb"
+    },
+    {
+      "path": "docs/V1_7_CONTINUOUS_WORLD.md",
+      "sizeBytes": 5340,
+      "sha256": "4d537fd9336db3465d59d99690aaea8a1c8760f074f50678dba028019751af09"
+    },
+    {
+      "path": "docs/V1_7_RELEASE_NOTES.md",
+      "sizeBytes": 5879,
+      "sha256": "e01b383bee26549f20ba08b23a41606d0277f8f04a09a22e4f2e7924d3055f79"
+    },
+    {
+      "path": "docs/V1_7_VALIDATION.md",
+      "sizeBytes": 1789,
+      "sha256": "9bb5030946e407e10946a91b77b6fa6daa4243b43ab56a7069abf61a5b0acca9"
+    },
+    {
+      "path": "docs/V1_8_RELEASE_NOTES.md",
+      "sizeBytes": 4576,
+      "sha256": "507f29662fffe2ca92f25c521fe4e02b482d09b7b9856bccad34b22b1e58395a"
+    },
+    {
+      "path": "docs/V1_8_VALIDATION.md",
+      "sizeBytes": 1152,
+      "sha256": "1a46a0fd47a9eeacae18211419e43ec20137406b056054bc4b93743e7570a990"
+    },
+    {
+      "path": "docs/V1_9_1_VISIBLE_JOINT_SUPPORT.md",
+      "sizeBytes": 2637,
+      "sha256": "045502847b98a92a513cc408284644b58bfb6a64035d8a3f1c4648c3013db72b"
+    },
+    {
+      "path": "docs/V1_9_2_COUNTRY_SCALE_CONTINUOUS.md",
+      "sizeBytes": 4051,
+      "sha256": "eec1988c57e62ae43c33922c0ff6b15a89ae64cfe1d27d6f58cd474ae4b244f6"
+    },
+    {
+      "path": "docs/V1_9_3_SCENARIO_PLACEMENT_REPAIR.md",
+      "sizeBytes": 4061,
+      "sha256": "6ea85bc114107ddeddc8831b293ff99ce5d75da3e3b9773ef041aa6c16e76886"
+    },
+    {
+      "path": "docs/VEHICLE_MODEL.md",
+      "sizeBytes": 2203,
+      "sha256": "9167b805bbdb9ed05926deb4ac48ed811d89620158a0e6fe6c129b6655c3f560"
+    },
+    {
+      "path": "docs/WEAPON_MODEL.md",
+      "sizeBytes": 2520,
+      "sha256": "50c379c5e5a3bfd625ca2827e58da19fa61a20c800c807b5595e43f6f927c85a"
+    },
+    {
+      "path": "docs/sources/iran_defence_products_2013_2016.pdf",
+      "sizeBytes": 7694651,
+      "sha256": "d99a0af74ce21f45b45a739a8b196d98c7dc22e1b844d859d85c6fe208b0b26b"
+    },
+    {
+      "path": "global.json",
+      "sizeBytes": 81,
+      "sha256": "b48d6da8fa62c0da7cc8a2da4ea036ac55836660a448ba533135abb5b8451b73"
+    },
+    {
+      "path": "launch_desktop_legacy.bat",
+      "sizeBytes": 107,
+      "sha256": "253c6adcc27ea860638448acc3a2f232caacc5dfcac1c019186ab046b1f0d3be"
+    },
+    {
+      "path": "launch_interface.bat",
+      "sizeBytes": 30,
+      "sha256": "25f4ff2ed61e012b1fa348606c0528b8a96505ffdbf5027fc5df7b47de831095"
+    },
+    {
+      "path": "launch_web.bat",
+      "sizeBytes": 368,
+      "sha256": "827b5bd3570729a4dc13d0244be58c34331373cf53d43e1055f477b176613fb6"
+    },
+    {
+      "path": "src/FieldSim.Core/AiIntentModels.cs",
+      "sizeBytes": 1634,
+      "sha256": "a64527b98b2bec7912ef7c15db5bb9f8517a6066b9465522e3677d792d7873cb"
+    },
+    {
+      "path": "src/FieldSim.Core/AssetState.cs",
+      "sizeBytes": 3525,
+      "sha256": "06a947fe1058095b3abd8e466b402fdacf05dbf175c63edb3cf63badce37520c"
+    },
+    {
+      "path": "src/FieldSim.Core/CasualtyLogisticsEngine.cs",
+      "sizeBytes": 6189,
+      "sha256": "8d3896fdd1d6525487a50bebebcc81907423e5b81c1bcc8a20abf21d6d621ed4"
+    },
+    {
+      "path": "src/FieldSim.Core/CohesionMoraleEngine.cs",
+      "sizeBytes": 4187,
+      "sha256": "87258f2340597f8c2f8ed97590d64b6640432ebc222644f32f20e9758940c87d"
+    },
+    {
+      "path": "src/FieldSim.Core/CommandAndControlModels.cs",
+      "sizeBytes": 12669,
+      "sha256": "7a4f31c9542c95192f6e257891a9f4a543b56974694e39ae56c143dc032d1fe6"
+    },
+    {
+      "path": "src/FieldSim.Core/DetectionEngine.cs",
+      "sizeBytes": 8192,
+      "sha256": "2a07a86ef941761cf2643827637c099904171e70ce31b2694a7f34193fc0a7a3"
+    },
+    {
+      "path": "src/FieldSim.Core/DeterministicRng.cs",
+      "sizeBytes": 883,
+      "sha256": "65850211fc69967215588b8be083d1296f79faed1fbc336fa54a616034cf5343"
+    },
+    {
+      "path": "src/FieldSim.Core/EngagementEngine.cs",
+      "sizeBytes": 19586,
+      "sha256": "271887e998d41740eea9f90a74d6f7b2d78397d16a79e0f9e79a4fbf2cb250cc"
+    },
+    {
+      "path": "src/FieldSim.Core/FieldSim.Core.csproj",
+      "sizeBytes": 36,
+      "sha256": "8d654c44b7bebb6b31a9f2f606927f45b5072193adc4eef8cce3f3cf3b278df3"
+    },
+    {
+      "path": "src/FieldSim.Core/FormationDestinationAllocator.cs",
+      "sizeBytes": 1849,
+      "sha256": "6fdfb33590c568f636646f467573e45d0aed00dfbbf1aee433c87134dedd0c8c"
+    },
+    {
+      "path": "src/FieldSim.Core/InfantryCombatModels.cs",
+      "sizeBytes": 9982,
+      "sha256": "9be84ed1d6665cbed349e222665839dbbff8e294c27a1603b63e6ac261e2b683"
+    },
+    {
+      "path": "src/FieldSim.Core/InfrastructureModels.cs",
+      "sizeBytes": 4967,
+      "sha256": "e03596bed7133bfdc46750fffcdf0659b4c29a1e8cb5e28de793d75fde043526"
+    },
+    {
+      "path": "src/FieldSim.Core/JointSupportModels.cs",
+      "sizeBytes": 22167,
+      "sha256": "647cd3aa1dc8ed1aad3f6224e2dce6c946e1522c108192f1af6032e181587438"
+    },
+    {
+      "path": "src/FieldSim.Core/LineOfSightEngine.cs",
+      "sizeBytes": 5935,
+      "sha256": "ea6eb2cbc25cbfc53e5a3dfce86022326b779bdd88138ba286f9ba10b80d1de2"
+    },
+    {
+      "path": "src/FieldSim.Core/OperationalSupportModels.cs",
+      "sizeBytes": 7887,
+      "sha256": "7cded56eb908e6b9b6668bee556c3ee8532b954f2aa8f0d712672e2b2fc240d0"
+    },
+    {
+      "path": "src/FieldSim.Core/SimulationDetailModels.cs",
+      "sizeBytes": 2802,
+      "sha256": "4f1b629b64692f816dff4ec031d2eae209202e601035c1f3b4201fe4e8f080eb"
+    },
+    {
+      "path": "src/FieldSim.Core/SimulationDiagnostics.cs",
+      "sizeBytes": 2136,
+      "sha256": "b6fb08b008d0d0f145087c407f1c27055c5c70730abc9d02273a3815b1358cd0"
+    },
+    {
+      "path": "src/FieldSim.Core/SimulationEvent.cs",
+      "sizeBytes": 90,
+      "sha256": "df40b248521f62853e1064ab77f9f12c334a187e36ea205a58f939ec4e4dd1bf"
+    },
+    {
+      "path": "src/FieldSim.Core/SimulationJournal.cs",
+      "sizeBytes": 1548,
+      "sha256": "30970b4c0e294a13bb6afa520e6f0c975e8f1a6891ee9e7b58d3424814ce1856"
+    },
+    {
+      "path": "src/FieldSim.Core/SpatialHashIndex.cs",
+      "sizeBytes": 3006,
+      "sha256": "f10e72b4652b28a719a5833fbc9d6b179495d92aad8b7dbd754f873a1b234013"
+    },
+    {
+      "path": "src/FieldSim.Core/SpatialModels.cs",
+      "sizeBytes": 4757,
+      "sha256": "e72d602e130860d01e035757d1e7fba155c9427417003e75cc392d7db1d8f6d8"
+    },
+    {
+      "path": "src/FieldSim.Core/StructureSpatialModels.cs",
+      "sizeBytes": 2796,
+      "sha256": "9a1d0fc83b9b71d2b196bafe2fd081be524cc3b27675f4734a1256c958161451"
+    },
+    {
+      "path": "src/FieldSim.Core/TacticalAiEngine.cs",
+      "sizeBytes": 28946,
+      "sha256": "9f907081fbd6fe25d14eeb0cb2ceb963b1fa00dcec9595f9588e8d4bd050bf67"
+    },
+    {
+      "path": "src/FieldSim.Core/TacticalEngine.cs",
+      "sizeBytes": 18683,
+      "sha256": "fdee5803dddaf452c91f9827576c4ea0cb2a5392c07cc5d162b893a204a419f7"
+    },
+    {
+      "path": "src/FieldSim.Core/TacticalModels.cs",
+      "sizeBytes": 12543,
+      "sha256": "df3e10c86d81242793e38a97cfb2088e7fa0550e862e332d4f8ffaa406e53455"
+    },
+    {
+      "path": "src/FieldSim.Core/TacticalWorldModel.cs",
+      "sizeBytes": 3173,
+      "sha256": "4fdd0632bc548f2c20a28dfe3522986c32a039882d80ed108c75f5fa958b994f"
+    },
+    {
+      "path": "src/FieldSim.Core/UrbanSpatialQueries.cs",
+      "sizeBytes": 6760,
+      "sha256": "1bbc3da11fda6b06c56538fb34126278b7807562be1419f05eca2e47b0a57510"
+    },
+    {
+      "path": "src/FieldSim.Core/VillageGridReference.cs",
+      "sizeBytes": 1672,
+      "sha256": "784e7ae44a6cfd9fd6bfa1ccee26b37dd2a38e969f9c7a9ef647819f75059394"
+    },
+    {
+      "path": "src/FieldSim.Data/AmmunitionDataLoader.cs",
+      "sizeBytes": 1026,
+      "sha256": "f226644e4560f5404ffe4be29be5364f3dcc45ecdc4b44b937b5c38b2e77d4a7"
+    },
+    {
+      "path": "src/FieldSim.Data/FieldSim.Data.csproj",
+      "sizeBytes": 151,
+      "sha256": "e1c90a7631d1856fad517e024214e1faf0443a99e69de75e2f9df5c166e607d5"
+    },
+    {
+      "path": "src/FieldSim.Data/ForceDataLoader.cs",
+      "sizeBytes": 3776,
+      "sha256": "bf5e62292d6605edc0c2f07f2d7e6f4e77c52b0b49e55997677ac9c79cf63220"
+    },
+    {
+      "path": "src/FieldSim.Data/FormationDataLoader.cs",
+      "sizeBytes": 1182,
+      "sha256": "2737da5bb7bfc154c54bc085ae3135d961de9ca1ac05b6b901e3aee5eccd3402"
+    },
+    {
+      "path": "src/FieldSim.Data/ScenarioOrbatDataLoader.cs",
+      "sizeBytes": 1609,
+      "sha256": "8ccb77e531ee95be104486bfde2577e111e880e4ed3c7f505e0fef4fbe73f754"
+    },
+    {
+      "path": "src/FieldSim.Data/ScenarioPackageLoader.cs",
+      "sizeBytes": 11412,
+      "sha256": "be463829b464b5bd4e041cdade978e8840e397d3ad61a5547aff8cb2729e8b63"
+    },
+    {
+      "path": "src/FieldSim.Data/SmallArmsDataLoader.cs",
+      "sizeBytes": 1627,
+      "sha256": "c8d2f5d1759c780c3c6ae7314e2808dc5ab265d7c6c013986e9b6662a575559d"
+    },
+    {
+      "path": "src/FieldSim.Data/SupportDataLoader.cs",
+      "sizeBytes": 1429,
+      "sha256": "f11e2b477dede9f571896863bf61856447bc7695f56f7879ed986d1358673232"
+    },
+    {
+      "path": "src/FieldSim.Data/TheaterMapLoader.cs",
+      "sizeBytes": 9195,
+      "sha256": "f14e681cc2aa0142f60497c0546a63e4545ea9a2646d58001e73c8adcd5785c3"
+    },
+    {
+      "path": "src/FieldSim.Data/VehicleDataLoader.cs",
+      "sizeBytes": 1178,
+      "sha256": "cd44258cc6558bacc3e3710a40804b175be6e5bc0fb87b9b3983c59a17ddea3a"
+    },
+    {
+      "path": "src/FieldSim.Data/WeaponDataLoader.cs",
+      "sizeBytes": 4071,
+      "sha256": "7e71a77c75aa738a3be0fda727a05944fd770084092ff8ab9d0ae9503860704c"
+    },
+    {
+      "path": "src/FieldSim.Desktop/App.xaml",
+      "sizeBytes": 1470,
+      "sha256": "b9a247201048e512c5321721a03a5cf99194be57a363f82d8d9f95b233d16d60"
+    },
+    {
+      "path": "src/FieldSim.Desktop/App.xaml.cs",
+      "sizeBytes": 95,
+      "sha256": "190a1a6e86352aede5726b13f0770a2b37e600d369f31056a5b767dee9d29f6c"
+    },
+    {
+      "path": "src/FieldSim.Desktop/FieldSim.Desktop.csproj",
+      "sizeBytes": 802,
+      "sha256": "3aecd31d5e58df70c93e0b4b5c0d0429120ca4ca654de951f9d85cc96736b2c6"
+    },
+    {
+      "path": "src/FieldSim.Desktop/MainWindow.xaml",
+      "sizeBytes": 31941,
+      "sha256": "a07cd2493293196d235898bba1ecffdb233d2cfc6f1348a1dc5c95bc7b709bf4"
+    },
+    {
+      "path": "src/FieldSim.Desktop/MainWindow.xaml.cs",
+      "sizeBytes": 76281,
+      "sha256": "0afd2de276535d0b6d2f4de22520aae99fe0accbc3522c15ca41ad3f3d6068a2"
+    },
+    {
+      "path": "src/FieldSim.Domain/AmmunitionModels.cs",
+      "sizeBytes": 811,
+      "sha256": "111ba68e6688f7cae8836e7a5a738953f100d087f71be3952ab6799c72e72cf4"
+    },
+    {
+      "path": "src/FieldSim.Domain/FieldSim.Domain.csproj",
+      "sizeBytes": 147,
+      "sha256": "6d973627da0d50ea2433d55e9b6bc1a6df8579d4fcd502835f00dcc57cd68365"
+    },
+    {
+      "path": "src/FieldSim.Domain/ForceDatasetValidator.cs",
+      "sizeBytes": 3032,
+      "sha256": "8211e74e08ade15f7f6223ded6935a956f305cef4a3c579b72d60c35e782cef1"
+    },
+    {
+      "path": "src/FieldSim.Domain/ForceModels.cs",
+      "sizeBytes": 2465,
+      "sha256": "12d7d0b456e8e392919b8a23c6a3c5006eda7dda30e385d96d9ca17b0ad339df"
+    },
+    {
+      "path": "src/FieldSim.Domain/FormationModels.cs",
+      "sizeBytes": 4707,
+      "sha256": "1a5a9093cf0011eee8fa053220abf402e0919ca52bc6f60acab2e6f38b60ecc4"
+    },
+    {
+      "path": "src/FieldSim.Domain/MapModels.cs",
+      "sizeBytes": 5433,
+      "sha256": "4af0ca842afc527d5fcaefb2a8f14eda9b09c2024bab69ddef25a3255d89331d"
+    },
+    {
+      "path": "src/FieldSim.Domain/OrbatModels.cs",
+      "sizeBytes": 11279,
+      "sha256": "2bcca1306ebf73bb416a6ecd677530257ef130f72d8c967acc1a01a1934c110f"
+    },
+    {
+      "path": "src/FieldSim.Domain/ScenarioGeoProjection.cs",
+      "sizeBytes": 2300,
+      "sha256": "4cb9add1248415ca25fc5011db8a410bda17abadfad4f6097282c1c2395bd619"
+    },
+    {
+      "path": "src/FieldSim.Domain/ScenarioPackageModels.cs",
+      "sizeBytes": 4556,
+      "sha256": "49dae5f20a6d7423991bbc6f83c5be17cb8f8dd849a645d6ccb664edb4b2e68b"
+    },
+    {
+      "path": "src/FieldSim.Domain/SmallArmsModels.cs",
+      "sizeBytes": 2066,
+      "sha256": "9974ca8133dee5e45d0cb1d9a46abb30a8bd510e8ddb621fa0dd5e7a99f4f912"
+    },
+    {
+      "path": "src/FieldSim.Domain/VehicleModels.cs",
+      "sizeBytes": 14343,
+      "sha256": "dcb30c51e3b21c9304a7728946dc659887430d71293ddfe97b9b571e7e1cc4c5"
+    },
+    {
+      "path": "src/FieldSim.Domain/WeaponDatasetValidator.cs",
+      "sizeBytes": 6053,
+      "sha256": "933d74ecc610243c33a765d1160ea9a8b210680b36b209c4fd2dcde1478f2add"
+    },
+    {
+      "path": "src/FieldSim.Domain/WeaponModels.cs",
+      "sizeBytes": 8939,
+      "sha256": "1776fe3f3b6851fb4153bef350895b18e0893d9c63b469519d6c47ceb57c3a1b"
+    },
+    {
+      "path": "src/FieldSim.Domain/WeatherAssessmentEngine.cs",
+      "sizeBytes": 1697,
+      "sha256": "5fa5792e289d92c280be8120c9e6bfdf83fd8a52b2bdc45b77070f013edfc99b"
+    },
+    {
+      "path": "src/FieldSim.Runner/FieldSim.Runner.csproj",
+      "sizeBytes": 582,
+      "sha256": "e68f2650eba53f62da25a3e87200a326ff769487fc0d21bc4d533776aebe9fed"
+    },
+    {
+      "path": "src/FieldSim.Runner/Program.cs",
+      "sizeBytes": 19180,
+      "sha256": "0ae94d3828d7d7eaed022b342e158e20ec938f5a8df68c0274c3190e5557e94e"
+    },
+    {
+      "path": "src/FieldSim.Scenarios/CountryScaleScenario.cs",
+      "sizeBytes": 22603,
+      "sha256": "52c1e73950fd70f24bfbd1322864182c9a37075c53e06ea15ef789f296f11ee9"
+    },
+    {
+      "path": "src/FieldSim.Scenarios/FieldSim.Scenarios.csproj",
+      "sizeBytes": 224,
+      "sha256": "f183ada2e3a37c058666b2bc8dddccb95168b12bc1eca33a1439847d464454f3"
+    },
+    {
+      "path": "src/FieldSim.Scenarios/ScenarioPlacementResolver.cs",
+      "sizeBytes": 4850,
+      "sha256": "fbc14d01af1c5edc91cd677ce57d0e1d7fe1cb9a6edf8f421e3fdb326f8293ca"
+    },
+    {
+      "path": "src/FieldSim.Scenarios/SmallArmsRuntimeAdapter.cs",
+      "sizeBytes": 4394,
+      "sha256": "e02da4ebab98140fd3e8e9ab3f536209805e623f536ed84288ebd7107dca1a2c"
+    },
+    {
+      "path": "src/FieldSim.Scenarios/SouthLebanon2026Scenario.cs",
+      "sizeBytes": 4488,
+      "sha256": "47c250f58e81dfc229a79c3661958e4639e8582ccc5835105fce393f033dcd5c"
+    },
+    {
+      "path": "src/FieldSim.Scenarios/TacticalDemoScenario.cs",
+      "sizeBytes": 3338,
+      "sha256": "0a05f17210d41404437bb3ec4c676da36d420983adb673ef904892f5a0798541"
+    },
+    {
+      "path": "src/FieldSim.Scenarios/TheaterEngine.cs",
+      "sizeBytes": 8964,
+      "sha256": "b50a4d6f8e87bc81eea9bd3f108f663acbdcd75c30c06a0770b3a673d99b6707"
+    },
+    {
+      "path": "src/FieldSim.Scenarios/TheaterModels.cs",
+      "sizeBytes": 2356,
+      "sha256": "5618b3994d89bdacdd7569fee9c02216bf9d55ac6fe74ca29937cc5a355b42a7"
+    },
+    {
+      "path": "src/FieldSim.Scenarios/VillageMapCatalog.cs",
+      "sizeBytes": 1258,
+      "sha256": "7432984e475c5ffa4a0d95f12e30dca1e303d3e8b7b3a007192caee8d8f7b25f"
+    },
+    {
+      "path": "src/FieldSim.Scenarios/VillageTrainingScenario.cs",
+      "sizeBytes": 20274,
+      "sha256": "8c4cc04612ad99e3c7aa70fd7cbc5c8d7b19afc71ddf0c4673f107aad6651222"
+    },
+    {
+      "path": "src/FieldSim.Web/FieldSim.Web.csproj",
+      "sizeBytes": 722,
+      "sha256": "71a92c5ec846516059394858e0f07b95dbd72e0a2a0b17eacd93df81c1d7786a"
+    },
+    {
+      "path": "src/FieldSim.Web/Program.cs",
+      "sizeBytes": 4422,
+      "sha256": "d7a5ac6d652e84f78a2c9dd455e73ff1f89555c7aaef8d924928b543a359277a"
+    },
+    {
+      "path": "src/FieldSim.Web/SimulationDiagnosticModels.cs",
+      "sizeBytes": 3210,
+      "sha256": "30e6cd794055e1c990abd09c177d13122890eb2f6841a614e1d23d0b8c41a9c8"
+    },
+    {
+      "path": "src/FieldSim.Web/SimulationSession.cs",
+      "sizeBytes": 94230,
+      "sha256": "fa7eaa9bb66cf06d2178a1a57cf180791a800653bffe50e749fa59a149e73ef1"
+    },
+    {
+      "path": "src/FieldSim.Web/wwwroot/app.js",
+      "sizeBytes": 61084,
+      "sha256": "0db5f87f95a00e3fb250c6478ad713fce23295cf80a6af2d8921dc842de89978"
+    },
+    {
+      "path": "src/FieldSim.Web/wwwroot/index.html",
+      "sizeBytes": 13878,
+      "sha256": "05f79faa8d5af488e84c63ac0bdda8239754a372ce92dffde6b8d8a2a98ed2a0"
+    },
+    {
+      "path": "src/FieldSim.Web/wwwroot/maps/aytaronn_sample.png",
+      "sizeBytes": 3498376,
+      "sha256": "7d0956ea27effa3ca08485a0cd3070d17d7c27e8dc53a58ab99dba572d9910e9"
+    },
+    {
+      "path": "src/FieldSim.Web/wwwroot/styles.css",
+      "sizeBytes": 26509,
+      "sha256": "e9a03dd848105f5efb248d5a5bc405b967e2ed39d2d672a71ba504795d5d4080"
+    },
+    {
+      "path": "tests/FieldSim.Tests/FieldSim.Tests.csproj",
+      "sizeBytes": 689,
+      "sha256": "0ef4080fec13dd9a47e23199dab6048fb9b12d36bb14564f646fc0b5671909a0"
+    },
+    {
+      "path": "tests/FieldSim.Tests/Program.cs",
+      "sizeBytes": 54602,
+      "sha256": "381409234a94eb7fedf71970e5261e201f12ce33a709cedb3c3413cafcf42f9e"
+    },
+    {
+      "path": "tests/FieldSim.Tests/fixtures/overrides.json",
+      "sizeBytes": 382,
+      "sha256": "97c983409d1dfa2e89c51b9c58464b4d6f7b7721bdab6a2aadc59a1c6735c02c"
+    },
+    {
+      "path": "tests/FieldSim.Tests/fixtures/weapon_overrides.json",
+      "sizeBytes": 341,
+      "sha256": "2b3ccc899ae68b19ae6098b8985c4a0c4a08a72ec00f6c1789c9409031d2e2ef"
+    },
+    {
+      "path": "tools/prepare_theater_map.ps1",
+      "sizeBytes": 4451,
+      "sha256": "707eeba19599cdfd3ff8af4306689c73588a0e00d1ab43f3c9c6138690fcfdba"
+    }
+  ]
+}

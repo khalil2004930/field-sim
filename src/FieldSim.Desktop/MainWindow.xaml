@@ -1,0 +1,393 @@
+<Window x:Class="FieldSim.Desktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="FieldSim v1.4 - ORBAT Command Center"
+        Width="1660" Height="980" MinWidth="1280" MinHeight="760"
+        Background="#0A1016" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style TargetType="ComboBox">
+            <Setter Property="Margin" Value="0,0,0,3" />
+            <Setter Property="MinHeight" Value="28" />
+            <Setter Property="Foreground" Value="#10202A" />
+            <Setter Property="Background" Value="#E9EFF2" />
+        </Style>
+        <Style TargetType="ComboBoxItem">
+            <Setter Property="Foreground" Value="#10202A" />
+            <Setter Property="Background" Value="#E9EFF2" />
+        </Style>
+        <Style TargetType="TabItem">
+            <Setter Property="Foreground" Value="#D9E5EB" />
+            <Setter Property="Background" Value="#141E27" />
+            <Setter Property="Padding" Value="10,6" />
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Foreground" Value="#071915" />
+                    <Setter Property="Background" Value="#48B8A0" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="TreeView">
+            <Setter Property="Background" Value="#0D151C" />
+            <Setter Property="Foreground" Value="#DDE8EE" />
+            <Setter Property="BorderBrush" Value="#2B3A45" />
+        </Style>
+        <Style TargetType="ListBox">
+            <Setter Property="Background" Value="#0D151C" />
+            <Setter Property="Foreground" Value="#DDE8EE" />
+            <Setter Property="BorderBrush" Value="#2B3A45" />
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="58" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="190" />
+            <RowDefinition Height="28" />
+        </Grid.RowDefinitions>
+
+        <!-- Command bar -->
+        <Border Grid.Row="0" Background="#101820" BorderBrush="#2B3944" BorderThickness="0,0,0,1">
+            <Grid Margin="14,7">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Border Width="36" Height="36" CornerRadius="4" Background="#48B8A0">
+                        <TextBlock Text="FS" Foreground="#071915" FontWeight="Bold" FontSize="15"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <StackPanel Margin="9,0,0,0">
+                        <TextBlock Text="FIELD SIMULATOR" FontSize="15" FontWeight="SemiBold" />
+                        <TextBlock Text="ORBAT COMMAND CENTER / LIVE BATTLESPACE" Foreground="#98A9B8" FontSize="10" />
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Button x:Name="StartPauseButton" Content="Start" Click="StartPause_Click"
+                            Background="#246B5D" BorderBrush="#318874" />
+                    <Button Content="Step" Click="Step_Click" />
+                    <Button Content="Reset" Click="Reset_Click" />
+                    <TextBlock Text="Speed" Foreground="#98A9B8" Margin="8,0,6,0" VerticalAlignment="Center" />
+                    <ComboBox x:Name="SpeedBox" Width="72" SelectedIndex="2" SelectionChanged="SpeedBox_SelectionChanged">
+                        <ComboBoxItem Content="0.5x" Tag="2000" />
+                        <ComboBoxItem Content="1x" Tag="1000" />
+                        <ComboBoxItem Content="2x" Tag="500" />
+                        <ComboBoxItem Content="4x" Tag="250" />
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Grid.Column="4" Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="View" Foreground="#98A9B8" VerticalAlignment="Center" Margin="0,0,6,0" />
+                    <ComboBox x:Name="PerspectiveBox" Width="76" SelectedIndex="0" SelectionChanged="PerspectiveBox_SelectionChanged">
+                        <ComboBoxItem Content="Blue" Tag="Blue" />
+                        <ComboBoxItem Content="Red" Tag="Red" />
+                    </ComboBox>
+                    <CheckBox x:Name="GridToggle" Content="Grid" IsChecked="True" Checked="DisplayOption_Changed" Unchecked="DisplayOption_Changed" />
+                    <CheckBox x:Name="PathToggle" Content="Orders" IsChecked="True" Checked="DisplayOption_Changed" Unchecked="DisplayOption_Changed" />
+                    <CheckBox x:Name="FogToggle" Content="Fog" IsChecked="False" Checked="DisplayOption_Changed" Unchecked="DisplayOption_Changed" />
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Primary command interface -->
+        <Grid Grid.Row="1" Margin="12,10,12,8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="330" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="350" />
+            </Grid.ColumnDefinitions>
+
+            <!-- ORBAT is now a permanent primary pane -->
+            <Border Grid.Column="0" Background="#101820" BorderBrush="#2B3A45" BorderThickness="1" CornerRadius="5">
+                <Grid Margin="9">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <StackPanel>
+                        <TextBlock Text="ORDER OF BATTLE" FontSize="13" FontWeight="Bold" Foreground="#48D8B8" />
+                        <TextBlock x:Name="OrbatScenarioText" Text="Scenario ORBAT" Foreground="#98A9B8" FontSize="10" TextWrapping="Wrap" Margin="0,3,0,0" />
+                    </StackPanel>
+                    <Grid Grid.Row="1" Margin="0,8,0,7">
+                        <Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                        <TextBlock Text="Depth" Foreground="#98A9B8" VerticalAlignment="Center" Margin="0,0,7,0" />
+                        <ComboBox x:Name="OrbatDepthBox" Grid.Column="1" SelectedIndex="1" SelectionChanged="OrbatDepthBox_SelectionChanged">
+                            <ComboBoxItem Content="Strategic" Tag="Strategic" />
+                            <ComboBoxItem Content="Tactical" Tag="Tactical" />
+                            <ComboBoxItem Content="Detail" Tag="Detail" />
+                        </ComboBox>
+                    </Grid>
+                    <TabControl Grid.Row="2" Background="#0D151C" BorderBrush="#2B3A45">
+                        <TabItem Header="BLUE">
+                            <Grid Margin="5">
+                                <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+                                <TextBlock Text="NATO-style hierarchy to platoon" Foreground="#75B9FF" FontSize="10" Margin="2,0,0,5" />
+                                <TreeView x:Name="BlueOrbatTree" Grid.Row="1" SelectedItemChanged="OrbatTree_SelectedItemChanged" />
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="RED">
+                            <Grid Margin="5">
+                                <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+                                <TextBlock Text="Irregular squads / teams / cells" Foreground="#FF8D82" FontSize="10" Margin="2,0,0,5" />
+                                <TreeView x:Name="RedOrbatTree" Grid.Row="1" SelectedItemChanged="OrbatTree_SelectedItemChanged" />
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                    <Border Grid.Row="3" Background="#151F28" CornerRadius="4" Padding="8" Margin="0,7,0,0">
+                        <StackPanel>
+                            <TextBlock Text="LIVE FORCE" Foreground="#98A9B8" FontSize="9" FontWeight="Bold" />
+                            <TextBlock x:Name="OrbatBattlePhaseText" Text="Deployment" FontWeight="SemiBold" Margin="0,2,0,0" />
+                            <Grid Margin="0,4,0,0">
+                                <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                                <TextBlock x:Name="OrbatBlueLiveText" Text="BLUE -" Foreground="#75B9FF" />
+                                <TextBlock x:Name="OrbatRedLiveText" Grid.Column="1" Text="RED -" Foreground="#FF8D82" />
+                            </Grid>
+                            <TextBlock x:Name="OrbatContactText" Text="No contact" Foreground="#98A9B8" FontSize="9" Margin="0,3,0,0" TextWrapping="Wrap" />
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </Border>
+
+            <!-- Battlefield is the center of the application -->
+            <Border Grid.Column="2" Background="#070D12" BorderBrush="#2B3A45" BorderThickness="1" CornerRadius="5" ClipToBounds="True">
+                <TabControl x:Name="MapModeTabs" Background="#070D12" BorderThickness="0" SelectionChanged="MapModeTabs_SelectionChanged">
+                    <TabItem Header="TACTICAL BATTLESPACE">
+                        <Grid>
+                            <Viewbox Stretch="Uniform" Margin="8">
+                                <Canvas x:Name="MapCanvas" Width="650" Height="650" Background="#273C35"
+                                        MouseLeftButtonDown="MapCanvas_MouseLeftButtonDown"
+                                        MouseRightButtonDown="MapCanvas_MouseRightButtonDown" />
+                            </Viewbox>
+                            <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12" Background="#F20A1016" CornerRadius="4" Padding="10,7" MaxWidth="520">
+                                <StackPanel>
+                                    <TextBlock x:Name="BattleTitleText" Text="TACTICAL ENGAGEMENT" Foreground="#48D8B8" FontSize="13" FontWeight="Bold" />
+                                    <TextBlock x:Name="BattlePhaseText" Text="DEPLOYMENT" Foreground="#F1C75B" FontSize="11" FontWeight="SemiBold" Margin="0,2,0,0" />
+                                    <TextBlock x:Name="MapTitleText" Text="Local battlespace" Foreground="#C7D4DD" FontSize="10" Margin="0,2,0,0" />
+                                    <TextBlock x:Name="MapHintText" Text="Left click inspect. Right click sends a local move override to a selected tactical entity." Foreground="#98A9B8" FontSize="9" Margin="0,2,0,0" TextWrapping="Wrap" />
+                                </StackPanel>
+                            </Border>
+                            <Border HorizontalAlignment="Right" VerticalAlignment="Top" Margin="12" Background="#F20A1016" CornerRadius="4" Padding="10,7">
+                                <TextBlock x:Name="BattleScoreText" Text="BLUE - / RED -" FontFamily="Consolas" FontSize="11" FontWeight="SemiBold" />
+                            </Border>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="3D LOCAL VIEW">
+                        <Grid Background="#071015">
+                            <Viewport3D x:Name="Tactical3DViewport" ClipToBounds="True" />
+                            <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12" Background="#EE0A1016" CornerRadius="4" Padding="10,7" MaxWidth="430">
+                                <StackPanel>
+                                    <TextBlock Text="LOCAL XYZ 3D PREVIEW" Foreground="#48D8B8" FontWeight="Bold" />
+                                    <TextBlock Text="Synthetic local terrain and live units rendered from the same elevation/XYZ state used by LOS. This is a bridge view before a full Unity client." Foreground="#B8C7D0" FontSize="9" TextWrapping="Wrap" Margin="0,3,0,0" />
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="THEATER MAP">
+                        <Grid Background="#0B1720">
+                            <Viewbox Stretch="Uniform" Margin="8">
+                                <Canvas x:Name="TheaterMapCanvas" Width="800" Height="800" Background="#173044"
+                                        MouseWheel="TheaterMapCanvas_MouseWheel"
+                                        MouseLeftButtonDown="TheaterMapCanvas_MouseLeftButtonDown" />
+                            </Viewbox>
+                            <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12" Background="#EE0A1016" CornerRadius="4" Padding="9">
+                                <StackPanel>
+                                    <TextBlock Text="THEATER GEOGRAPHY" Foreground="#48D8B8" FontWeight="Bold" />
+                                    <TextBlock x:Name="TheaterCoordinateText" Text="Click map for coordinates" Foreground="#C7D4DD" FontSize="10" Margin="0,3,0,5" />
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Content="Full extent" Click="TheaterFullExtent_Click" />
+                                        <Button Content="South" Click="TheaterSouthLebanon_Click" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                            <Border HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="12" Background="#EE0A1016" CornerRadius="4" Padding="9,6" MaxWidth="500">
+                                <TextBlock x:Name="TheaterAttributionText" Text="Public reference geography" Foreground="#B8C7D0" FontSize="9" TextWrapping="Wrap" />
+                            </Border>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+            </Border>
+
+            <!-- Context and command pane -->
+            <Border Grid.Column="4" Background="#101820" BorderBrush="#2B3A45" BorderThickness="1" CornerRadius="5">
+                <TabControl Background="#101820" BorderThickness="0">
+                    <TabItem Header="FORMATION">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <StackPanel Margin="10">
+                                <TextBlock x:Name="OrbatNodeNameText" Text="Select an ORBAT node" FontWeight="Bold" FontSize="15" />
+                                <TextBlock x:Name="OrbatNodeMetaText" Text="Echelon / role / status" Foreground="#98A9B8" Margin="0,4,0,0" TextWrapping="Wrap" />
+                                <Separator Margin="0,9" />
+                                <TextBlock x:Name="OrbatNodeStateText" Text="Readiness - / morale - / ammo - / comms -" FontFamily="Consolas" TextWrapping="Wrap" />
+                                <TextBlock x:Name="OrbatNodeOrderText" Text="Order: -" Margin="0,7,0,0" TextWrapping="Wrap" />
+                                <TextBlock x:Name="OrbatLiveLinkText" Text="Live link: waiting for scenario state" Foreground="#BFD2DE" Margin="0,7,0,0" TextWrapping="Wrap" />
+                                <TextBlock Text="FORMATION COMMAND" Foreground="#48D8B8" FontWeight="Bold" FontSize="10" Margin="0,14,0,6" />
+                                <WrapPanel>
+                                    <Button Content="Hold" Click="OrbatHold_Click" />
+                                    <Button Content="Advance" Click="OrbatAdvance_Click" />
+                                    <Button Content="Defend" Click="OrbatDefend_Click" />
+                                    <Button Content="Support" Click="OrbatSupport_Click" />
+                                    <Button Content="Withdraw" Click="OrbatWithdraw_Click" />
+                                </WrapPanel>
+                                <TextBlock Text="Advance/Defend/Support use the currently selected tactical grid reference when available." Foreground="#98A9B8" FontSize="9" TextWrapping="Wrap" Margin="0,4,0,0" />
+                                <TextBlock x:Name="OrbatBoundaryText" Text="Synthetic scenario task organization." Foreground="#D6A65D" FontSize="9" Margin="0,11,0,0" TextWrapping="Wrap" />
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+
+                    <TabItem Header="UNIT">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="MISSION" Foreground="#48D8B8" FontWeight="Bold" FontSize="10" />
+                                <TextBlock x:Name="MissionNameText" Text="Scenario" FontWeight="SemiBold" FontSize="14" Margin="0,5,0,0" TextWrapping="Wrap" />
+                                <TextBlock x:Name="MissionBriefingText" Text="Mission briefing" Foreground="#C7D4DD" FontSize="10" Margin="0,4,0,0" TextWrapping="Wrap" />
+                                <TextBlock x:Name="MissionPhaseText" Text="Deployment" Foreground="#F1C75B" Margin="0,4,0,0" />
+                                <Grid Margin="0,7,0,0">
+                                    <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                                    <TextBlock x:Name="BlueStrengthText" Text="BLUE -" Foreground="#75B9FF" />
+                                    <TextBlock x:Name="RedStrengthText" Grid.Column="1" Text="RED -" Foreground="#FF8D82" />
+                                </Grid>
+                                <TextBlock x:Name="ObjectiveControlText" Text="Objective -" Margin="0,5,0,0" TextWrapping="Wrap" />
+                                <TextBlock x:Name="BattleResultText" Text="Result: ongoing" Foreground="#98A9B8" Margin="0,3,0,0" />
+
+                                <Separator Margin="0,10" />
+                                <TextBlock Text="MAP / ENVIRONMENT" Foreground="#48D8B8" FontWeight="Bold" FontSize="10" />
+                                <TextBlock Text="Sector" Foreground="#98A9B8" FontSize="9" Margin="0,6,0,2" />
+                                <ComboBox x:Name="SectorBox" SelectionChanged="SectorBox_SelectionChanged" />
+                                <TextBlock Text="Village" Foreground="#98A9B8" FontSize="9" Margin="0,5,0,2" />
+                                <ComboBox x:Name="VillageBox" SelectionChanged="VillageBox_SelectionChanged" />
+                                <Grid Margin="0,7,0,0">
+                                    <Grid.ColumnDefinitions><ColumnDefinition Width="95"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions><RowDefinition Height="22"/><RowDefinition Height="22"/><RowDefinition Height="22"/><RowDefinition Height="22"/></Grid.RowDefinitions>
+                                    <TextBlock Text="Sector" Foreground="#98A9B8"/><TextBlock x:Name="SectorText" Grid.Column="1" Text="-"/>
+                                    <TextBlock Grid.Row="1" Text="Village" Foreground="#98A9B8"/><TextBlock x:Name="VillageText" Grid.Row="1" Grid.Column="1" Text="-"/>
+                                    <TextBlock Grid.Row="2" Text="Grid" Foreground="#98A9B8"/><TextBlock x:Name="GridReferenceText" Grid.Row="2" Grid.Column="1" Text="-" FontFamily="Consolas"/>
+                                    <TextBlock Grid.Row="3" Text="Keypad" Foreground="#98A9B8"/><TextBlock x:Name="KeypadRefText" Grid.Row="3" Grid.Column="1" Text="-" FontFamily="Consolas"/>
+                                </Grid>
+                                <Grid Margin="0,8,0,0">
+                                    <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="8"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                                    <StackPanel>
+                                        <TextBlock Text="LIGHT" Foreground="#98A9B8" FontSize="9" />
+                                        <ComboBox x:Name="LightBox" SelectedIndex="0" SelectionChanged="EnvironmentBox_SelectionChanged">
+                                            <ComboBoxItem Content="Day" Tag="Day"/><ComboBoxItem Content="Dusk" Tag="Dusk"/>
+                                            <ComboBoxItem Content="Night" Tag="Night"/><ComboBoxItem Content="Moonlit" Tag="MoonlitNight"/>
+                                        </ComboBox>
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="2">
+                                        <TextBlock Text="VISIBILITY" Foreground="#98A9B8" FontSize="9" />
+                                        <ComboBox x:Name="WeatherBox" SelectedIndex="0" SelectionChanged="EnvironmentBox_SelectionChanged">
+                                            <ComboBoxItem Content="Clear" Tag="Clear"/><ComboBoxItem Content="Haze" Tag="Haze"/>
+                                            <ComboBoxItem Content="Rain" Tag="Rain"/><ComboBoxItem Content="Fog" Tag="Fog"/><ComboBoxItem Content="Dust" Tag="Dust"/>
+                                        </ComboBox>
+                                    </StackPanel>
+                                </Grid>
+
+                                <Separator Margin="0,10" />
+                                <TextBlock Text="SELECTED ENTITY" Foreground="#48D8B8" FontWeight="Bold" FontSize="10" />
+                                <Grid Margin="0,7,0,0">
+                                    <Grid.ColumnDefinitions><ColumnDefinition Width="110"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="22"/><RowDefinition Height="22"/><RowDefinition Height="22"/><RowDefinition Height="22"/>
+                                        <RowDefinition Height="22"/><RowDefinition Height="22"/><RowDefinition Height="22"/><RowDefinition Height="22"/>
+                                        <RowDefinition Height="22"/><RowDefinition Height="22"/><RowDefinition Height="22"/><RowDefinition Height="22"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="Unit" Foreground="#98A9B8"/><TextBlock x:Name="UnitIdText" Grid.Column="1" Text="-"/>
+                                    <TextBlock Grid.Row="1" Text="Faction/class" Foreground="#98A9B8"/><TextBlock x:Name="FactionText" Grid.Row="1" Grid.Column="1" Text="-"/>
+                                    <TextBlock Grid.Row="2" Text="Grid" Foreground="#98A9B8"/><TextBlock x:Name="PositionText" Grid.Row="2" Grid.Column="1" Text="-" FontFamily="Consolas"/>
+                                    <TextBlock Grid.Row="3" Text="Local XYZ" Foreground="#98A9B8"/><TextBlock x:Name="WorldPositionText" Grid.Row="3" Grid.Column="1" Text="-" FontFamily="Consolas"/>
+                                    <TextBlock Grid.Row="4" Text="Ground alt" Foreground="#98A9B8"/><TextBlock x:Name="AltitudeText" Grid.Row="4" Grid.Column="1" Text="-"/>
+                                    <TextBlock Grid.Row="5" Text="Terrain" Foreground="#98A9B8"/><TextBlock x:Name="TerrainText" Grid.Row="5" Grid.Column="1" Text="-"/>
+                                    <TextBlock Grid.Row="6" Text="Territory" Foreground="#98A9B8"/><TextBlock x:Name="TerritoryText" Grid.Row="6" Grid.Column="1" Text="-"/>
+                                    <TextBlock Grid.Row="7" Text="Route/status" Foreground="#98A9B8"/><TextBlock x:Name="RouteText" Grid.Row="7" Grid.Column="1" Text="-"/>
+                                    <TextBlock Grid.Row="8" Text="Opponent" Foreground="#98A9B8"/><TextBlock x:Name="OpponentText" Grid.Row="8" Grid.Column="1" Text="-"/>
+                                    <TextBlock Grid.Row="9" Text="3D LOS" Foreground="#98A9B8"/><TextBlock x:Name="LosText" Grid.Row="9" Grid.Column="1" Text="-"/>
+                                    <TextBlock Grid.Row="10" Text="Perspective" Foreground="#98A9B8"/><TextBlock x:Name="DetectionText" Grid.Row="10" Grid.Column="1" Text="-"/>
+                                    <TextBlock Grid.Row="11" Text="Reciprocal" Foreground="#98A9B8"/><TextBlock x:Name="ReciprocalText" Grid.Row="11" Grid.Column="1" Text="-"/>
+                                </Grid>
+                                <TextBlock x:Name="UnitStatusText" Text="-" Foreground="#98A9B8" FontSize="9" TextWrapping="Wrap" Margin="0,6,0,0" />
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+
+                    <TabItem Header="REFERENCE">
+                        <TabControl Margin="7" Background="#101820">
+                            <TabItem Header="IDF TREE">
+                                <Grid Margin="5">
+                                    <Grid.RowDefinitions><RowDefinition Height="*"/><RowDefinition Height="190"/></Grid.RowDefinitions>
+                                    <TreeView x:Name="FormationTree" SelectedItemChanged="FormationTree_SelectedItemChanged" />
+                                    <Border Grid.Row="1" Background="#151F28" CornerRadius="4" Padding="9" Margin="0,7,0,0">
+                                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                            <StackPanel>
+                                                <TextBlock x:Name="FormationNameText" Text="Select a formation" FontWeight="Bold" />
+                                                <TextBlock x:Name="FormationMetaText" Text="Public baseline" Foreground="#98A9B8" FontSize="9" TextWrapping="Wrap" Margin="0,3,0,0" />
+                                                <TextBlock x:Name="FormationChildrenText" Text="" Margin="0,4,0,0" />
+                                                <TextBlock x:Name="FormationNotesText" Text="" Foreground="#98A9B8" FontSize="9" TextWrapping="Wrap" Margin="0,4,0,0" />
+                                                <TextBlock x:Name="FormationBoundaryText" Text="Public reference only." Foreground="#D6A65D" FontSize="9" TextWrapping="Wrap" Margin="0,5,0,0" />
+                                            </StackPanel>
+                                        </ScrollViewer>
+                                    </Border>
+                                </Grid>
+                            </TabItem>
+                            <TabItem Header="VEHICLES">
+                                <Grid Margin="5">
+                                    <Grid.RowDefinitions><RowDefinition Height="160"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+                                    <ListBox x:Name="VehicleList" SelectionChanged="VehicleList_SelectionChanged" DisplayMemberPath="DisplayName" />
+                                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="0,7,0,0">
+                                        <StackPanel>
+                                            <TextBlock x:Name="VehicleNameText" Text="Select a vehicle" FontWeight="Bold" FontSize="14" />
+                                            <TextBlock x:Name="VehicleStatusText" Foreground="#98A9B8" FontSize="9" TextWrapping="Wrap" Margin="0,3,0,0" />
+                                            <TextBlock x:Name="VehiclePhysicalText" TextWrapping="Wrap" Margin="0,7,0,0" />
+                                            <TextBlock x:Name="VehicleMobilityText" TextWrapping="Wrap" Margin="0,4,0,0" />
+                                            <TextBlock x:Name="VehicleWeaponText" TextWrapping="Wrap" Margin="0,4,0,0" />
+                                            <TextBlock x:Name="VehicleOpticsText" TextWrapping="Wrap" Margin="0,4,0,0" />
+                                            <TextBlock x:Name="VehicleApsText" TextWrapping="Wrap" Margin="0,4,0,0" />
+                                            <TextBlock Text="Synthetic protection zones" FontWeight="SemiBold" Margin="0,7,0,3" />
+                                            <ListBox x:Name="ArmorZoneList" Height="150" FontFamily="Consolas" FontSize="9" />
+                                            <TextBlock x:Name="VehicleBoundaryText" Foreground="#D6A65D" FontSize="9" TextWrapping="Wrap" Margin="0,6,0,0" />
+                                        </StackPanel>
+                                    </ScrollViewer>
+                                </Grid>
+                            </TabItem>
+                        </TabControl>
+                    </TabItem>
+                </TabControl>
+            </Border>
+        </Grid>
+
+        <!-- AAR / event stream is always visible -->
+        <Border Grid.Row="2" Margin="12,0,12,8" Background="#101820" BorderBrush="#2B3A45" BorderThickness="1" CornerRadius="5">
+            <Grid Margin="9">
+                <Grid.ColumnDefinitions><ColumnDefinition Width="240"/><ColumnDefinition Width="10"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                <StackPanel>
+                    <TextBlock Text="SIMULATION" Foreground="#48D8B8" FontWeight="Bold" FontSize="10" />
+                    <Grid Margin="0,6,0,0">
+                        <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                        <StackPanel><TextBlock Text="TIME" Foreground="#98A9B8" FontSize="9"/><TextBlock x:Name="TickText" Text="00:00" FontSize="24" FontWeight="SemiBold"/></StackPanel>
+                        <StackPanel Grid.Column="1"><TextBlock Text="MODE" Foreground="#98A9B8" FontSize="9"/><TextBlock x:Name="ModeText" Text="PAUSED" FontSize="15" FontWeight="SemiBold" Foreground="#F1C75B" Margin="0,3,0,0"/></StackPanel>
+                    </Grid>
+                    <TextBlock Text="RECENT ACTION" Foreground="#98A9B8" FontSize="9" FontWeight="Bold" Margin="0,9,0,2" />
+                    <TextBlock x:Name="RecentActionText" Text="Orders loaded." FontFamily="Consolas" FontSize="9" TextWrapping="Wrap" />
+                </StackPanel>
+                <StackPanel Grid.Column="2">
+                    <TextBlock Text="LIVE EVENT / AAR STREAM" Foreground="#48D8B8" FontWeight="Bold" FontSize="10" />
+                    <ListBox x:Name="EventList" Height="142" Margin="0,5,0,0" FontFamily="Consolas" FontSize="10" />
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="3" Background="#101820" BorderBrush="#2B3944" BorderThickness="0,1,0,0">
+            <Grid Margin="12,0">
+                <TextBlock x:Name="StatusText" Text="Ready" Foreground="#98A9B8" VerticalAlignment="Center" />
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <TextBlock Text="Sector " Foreground="#667987"/><TextBlock x:Name="SectorTextFooter" Text="" Visibility="Collapsed"/>
+                    <TextBlock Text="ORBAT + BATTLESPACE + AAR" Foreground="#667987" FontSize="9" />
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
