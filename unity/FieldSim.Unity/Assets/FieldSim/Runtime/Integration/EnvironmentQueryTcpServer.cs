@@ -171,7 +171,13 @@ namespace FieldSim.Unity.Integration
                 case "groundHeight":
                 {
                     Vector3 unityPoint = worldSpace.ToUnity(request.point);
-                    float groundY = environmentQueries.SampleGroundHeight(unityPoint);
+                    if (!environmentQueries.TrySampleGroundHeight(unityPoint, out float groundY))
+                    {
+                        response.handled = false;
+                        response.status = "unavailable";
+                        response.textValue = "No registered terrain covers the requested position.";
+                        break;
+                    }
                     FieldSimPosition fieldPoint = worldSpace.ToFieldSim(new Vector3(unityPoint.x, groundY, unityPoint.z));
                     response.numberValue = fieldPoint.zMeters;
                     break;
@@ -289,3 +295,4 @@ namespace FieldSim.Unity.Integration
         }
     }
 }
+
