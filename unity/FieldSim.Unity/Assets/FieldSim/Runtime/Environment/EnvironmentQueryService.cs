@@ -60,7 +60,7 @@ namespace FieldSim.Unity.Environment
             return new VisibilityResult(VisibilityStatus.BlockedByOther, hit.collider, hit.point);
         }
 
-        public float SampleGroundHeight(Vector3 worldPosition)
+        public bool TrySampleGroundHeight(Vector3 worldPosition, out float groundHeight)
         {
             foreach (Terrain terrain in terrains)
             {
@@ -68,10 +68,12 @@ namespace FieldSim.Unity.Environment
                 Vector3 local = worldPosition - terrain.transform.position;
                 Vector3 size = terrain.terrainData.size;
                 if (local.x < 0f || local.z < 0f || local.x > size.x || local.z > size.z) continue;
-                return terrain.SampleHeight(worldPosition) + terrain.transform.position.y;
+                groundHeight = terrain.SampleHeight(worldPosition) + terrain.transform.position.y;
+                return true;
             }
 
-            return worldPosition.y;
+            groundHeight = 0f;
+            return false;
         }
 
         public List<StructureBase> GetStructuresNear(Vector3 point, float radiusMeters)
@@ -116,3 +118,4 @@ namespace FieldSim.Unity.Environment
         }
     }
 }
+

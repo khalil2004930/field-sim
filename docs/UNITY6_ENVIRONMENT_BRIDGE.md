@@ -24,6 +24,21 @@ The current bridge supports:
 - structure movement blocking;
 - NavMesh path requests.
 
+For `groundHeight`, `handled: true` means a registered terrain covered the
+requested horizontal position and `numberValue` is its FieldSim elevation in
+meters, including legitimate zero elevations. When no registered terrain covers
+the point (including points outside all registered terrain bounds), Unity returns
+`handled: false` with `status: "unavailable"`. The provider then returns `false`
+from `TryGetGroundAltitude`, allowing `TacticalWorldModel.GroundAltitudeAt` to use
+its existing synthetic elevation grid. The request's initial elevation is never
+used as a terrain sample. Terrain edges are included in the registered bounds.
+
+Ground-height regression checks:
+
+- Run the Unity EditMode `GroundHeightQueryTests` in the Unity Test Runner.
+- Run `dotnet run --project tests/FieldSim.GroundHeightRegression` for the
+  localhost protocol/provider and synthetic fallback checks (no test packages).
+
 ## Unity side
 
 `EnvironmentQueryTcpServer` binds only to `127.0.0.1:47831`. Socket work occurs on background threads, while every Unity Physics/NavMesh call is queued back to the Unity main thread.
@@ -49,3 +64,4 @@ if (!unityEnvironment.Ping())
 Unity answers geometry/navigation questions. It does not decide AI intent, C2/ISR state, morale, support requests, combat outcomes or scenario time.
 
 The next migration step is to make `TacticalEngine.IssueMove*` prefer Unity NavMesh paths and to synchronize Unity entity GameObjects from immutable simulation snapshots. Combat remains disconnected from structural damage until the environment milestone is stable.
+
